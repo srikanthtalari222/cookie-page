@@ -143,22 +143,22 @@
   // ✅ Additional unique cookies
 
   // 4. User language preference (90 days)
-  setCookie("user_language_v2_online_manual", "en-IN", 90);
+  setCookie("user_language_v2_online_manual_check", "en-IN", 90);
 
   // 5. Login timestamp (1 day)
-  setCookie("login_timestamp_v2_online_manual", new Date().toISOString(), 1);
+  setCookie("login_timestamp_v2_online_manual_check", new Date().toISOString(), 1);
 
   // 6. Device type (30 days)
-  setCookie("device_type_v2_online_manual", "desktop", 30);
+  setCookie("device_type_v2_online_manual_check", "desktop", 30);
 
   // 7. Feature flag / A-B testing group (14 days)
-  setCookie("ab_test_group_v2_online_manual", "group_A", 14);
+  setCookie("ab_test_group_v2_online_manual_check", "group_A", 14);
 
   // 8. Referral source (7 days)
-  setCookie("referral_source_v2_online_manual", document.referrer || "direct", 7);
+  setCookie("referral_source_v2_online_manual_check", document.referrer || "direct", 7);
 
   // 9. Random tracking ID (60 days)
-  setCookie("tracking_id_v2_online_manual", "trk_" + Math.random().toString(36).substring(2, 12), 60);
+  setCookie("tracking_id_v2_online_manual_check", "trk_" + Math.random().toString(36).substring(2, 12), 60);
 
   // Update the status message after setting cookies
   document.getElementById('cookieMessage').innerHTML =
