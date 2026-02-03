@@ -122,28 +122,49 @@
         <p id="cookieMessage">Running cookie script...</p>
     </div>
 
-    <script>
-        // Function to set a single cookie
-        function setCookie(name, value, days) {
-            const date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            const expires = "; expires=" + date.toUTCString();
-            // Set the cookie with Path=/ (available site-wide) and Secure for HTTPS
-            document.cookie = name + "=" + (value || "") + expires + "; path=/; SameSite=Lax; Secure";
-        }
+   <script>
+  // Function to set a single cookie
+  function setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "; expires=" + date.toUTCString();
 
-        // 1. Set a Session ID cookie (Expires when the browser closes, so 0 days)
-        setCookie("session_id", "vk_profile_" + Math.random().toString(16).slice(2), 0.0001); 
+    // Set the cookie with Path=/ (available site-wide) and Secure for HTTPS
+    document.cookie =
+      name + "=" + encodeURIComponent(value || "") +
+      expires + "; path=/; SameSite=Lax; Secure";
+  }
 
-        // 2. Set a Theme Preference cookie (Expires in 30 days)
-        setCookie("theme_preference", "RCB_Maroon", 30);
+  // Existing cookies
+  setCookie("session_id", "vk_profile_" + Math.random().toString(16).slice(2), 0.0001);
+  setCookie("theme_preference", "RCB_Maroon", 30);
+  setCookie("last_visited", "Virat_Profile", 7);
 
-        // 3. Set a Last Visited Page cookie (Expires in 7 days)
-        setCookie("last_visited", "Virat_Profile", 7);
+  // ✅ Additional unique cookies
 
-        // Update the status message after setting cookies
-        document.getElementById('cookieMessage').innerHTML = '✅ **3 Cookies** have been dropped successfully on your browser!';
-        console.log("Cookies set: session_id, theme_preference, last_visited");
-    </script>
+  // 4. User language preference (90 days)
+  setCookie("user_language", "en-IN", 90);
+
+  // 5. Login timestamp (1 day)
+  setCookie("login_timestamp", new Date().toISOString(), 1);
+
+  // 6. Device type (30 days)
+  setCookie("device_type", "desktop", 30);
+
+  // 7. Feature flag / A-B testing group (14 days)
+  setCookie("ab_test_group", "group_A", 14);
+
+  // 8. Referral source (7 days)
+  setCookie("referral_source", document.referrer || "direct", 7);
+
+  // 9. Random tracking ID (60 days)
+  setCookie("tracking_id", "trk_" + Math.random().toString(36).substring(2, 12), 60);
+
+  // Update the status message after setting cookies
+  document.getElementById('cookieMessage').innerHTML =
+    '✅ **9 Cookies** have been dropped successfully on your browser!';
+
+  console.log("Cookies set: session_id, theme_preference, last_visited, user_language, login_timestamp, device_type, ab_test_group, referral_source, tracking_id");
+</script>
 </body>
 </html>
